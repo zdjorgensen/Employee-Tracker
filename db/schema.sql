@@ -8,7 +8,7 @@ CREATE TABLE department (
     dept_name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE role (
+CREATE TABLE emp_role (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
@@ -24,8 +24,10 @@ CREATE TABLE employee (
     last_name VARCHAR(30),
     role_id INT,
     FOREIGN KEY (role_id)
-    REFERENCES  role(id)
+    REFERENCES  emp_role(id)
     ON DELETE SET NULL,
-    manager_id INT REFERENCES employee(id),
+    manager_id INT REFERENCES employee(id)
     ON DELETE SET NULL
 );
+
+SELECT * FROM department;
