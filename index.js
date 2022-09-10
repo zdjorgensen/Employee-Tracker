@@ -12,7 +12,7 @@ const db = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: 'Edisoncats1!',
+        password: 'password',
         database: 'cms_db'
     },
     console.log('working')
@@ -56,8 +56,10 @@ function menu() {
 }
 async function viewEmp() {
     console.log('working');
-    const employee = await mysql.db.promise('SELECT * FROM employee')
-    db.query('SELECT * FROM employee')
+    // const employee = await db.promise('SELECT * FROM employee')
+    db.query('SELECT * FROM employee', function (err, results) {
+        console.log(results);
+    })
     menu();
 
 }
@@ -70,7 +72,9 @@ async function updateEmp() {
     menu();
 }
 async function viewRole() {
-    console.log('working');
+    db.query('SELECT * FROM emp_role', function (err, results) {
+        console.log(results);
+    })
     menu();
 }
 async function addRole() {
@@ -79,6 +83,9 @@ async function addRole() {
 }
 async function viewDept() {
     console.log('working');
+    db.query('SELECT * FROM department', function (err, results) {
+        console.log(results);
+    })
     menu();
 }
 async function addDept() {

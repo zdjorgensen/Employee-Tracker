@@ -15,7 +15,6 @@ CREATE TABLE emp_role (
     dept_id INT,
     FOREIGN KEY (dept_id)
     REFERENCES department(id)
-    ON DELETE SET NULL
 );
 
 CREATE TABLE employee (
@@ -24,10 +23,7 @@ CREATE TABLE employee (
     last_name VARCHAR(30),
     role_id INT,
     FOREIGN KEY (role_id)
-    REFERENCES  emp_role(id)
-    ON DELETE SET NULL,
+    REFERENCES  emp_role(id),
     manager_id INT REFERENCES employee(id)
     ON DELETE SET NULL
 );
-
-SELECT * FROM department;
