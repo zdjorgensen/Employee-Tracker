@@ -55,7 +55,6 @@ function menu() {
 };
 
 async function viewEmp() {
-    console.log('working');
     db.query('SELECT * FROM employee', function (err, results) {
         console.log(results);
     })
@@ -64,13 +63,30 @@ async function viewEmp() {
 };
 
 async function addEmp() {
-
-    console.log('working');
+    const empQuestions = await inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the first name of the employee?',
+            name: 'firstName'
+        },
+        {
+            type: 'input',
+            message: 'What is the last name of the employee?',
+            name: 'lastName',
+        },
+    ]).then((res) => {
+        let emp = [
+            [res.firstName], 
+            [res.lastName]
+        ]
+        console.log(emp);
+        db.query(`INSERT INTO employee (first_name, last_name) VALUES (?)`, [emp]);
+    })
     await menu();
 };
 
 async function updateEmp() {
-    console.log('working');
+    console.log('placeholder');
     await menu();
 };
 
@@ -82,7 +98,25 @@ async function viewRole() {
 };
 
 async function addRole() {
-    console.log('working');
+    const roleQuestions = await inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the name of the role?',
+            name: 'title'
+        },
+        {
+            type: 'input',
+            message: 'What is the salary for the role?',
+            name: 'salary',
+        },
+    ]).then((res) => {
+        let role = [
+            [res.title], 
+            [parseInt(res.salary)]
+        ]
+        console.log(role);
+        db.query(`INSERT INTO emp_role (title, salary) VALUES (?)`, [role]);
+    })
     await menu();
 };
 
@@ -95,20 +129,15 @@ async function viewDept() {
 };
 
 async function addDept() {
-    const test = await inquirer.prompt([
+    const deptQuestions = await inquirer.prompt([
         {
             type: 'input',
             message: 'What is the name of the department?',
-            name: 'dept_name',
+            name: 'dept_name'
         },
     ]).then((res) => {
         console.log(res.dept_name);
-        db.query(`INSERT INTO department (dept_name) VALUES (?)`, res.dept_name, (err => {
-            if(err) {
-                console.log(err)
-            }
-            console.log("inserted");
-        }));
+        db.query(`INSERT INTO department (dept_name) VALUES (?)`, res.dept_name); 
     })
     await menu();
 };

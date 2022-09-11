@@ -1,8 +1,8 @@
 INSERT INTO department (dept_name)
-VALUES ("dept name 1"), ("dept name 2"); 
+VALUES ("Recorder's Office"), ("Chemistry"); 
 
 INSERT INTO emp_role (title, salary)
-VALUES ("title", 3.0); 
+VALUES ("Land Record Specialist", 35000.00), ("Grad Student", 29000.00); 
 
 INSERT INTO employee (first_name, last_name)
-VALUES ("first name", "last name");  
+VALUES ("Zachry", "Jorgensen"), ("Samantha", "Curry");
