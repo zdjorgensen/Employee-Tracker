@@ -112,7 +112,7 @@ async function addEmp() {
             type: 'list',
             message: "What is the employee's role?",
             name: 'role',
-            choices: [1, 2, 3, 4]
+            choices: [1, 2, 3, 4, 5]
         },
         {
             type: 'list',
@@ -147,7 +147,7 @@ async function addRole() {
             type: 'list',
             message: 'Which department does this role belong to?',
             name: 'department',
-            choices: [1, 2, 3, 4]
+            choices: [1, 2, 3, 4, 5]
         },
     ]).then((res) => {
         let role = [
